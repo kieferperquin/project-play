@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerOneWayPlatform : MonoBehaviour
+public class PlayerOneWayPlatform1 : MonoBehaviour
 {
     private GameObject currentOneWayPlatform;
 
@@ -11,7 +11,7 @@ public class PlayerOneWayPlatform : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        if(Input.GetKeyDown(KeyCode.S))
         {
             if(currentOneWayPlatform != null)
             {

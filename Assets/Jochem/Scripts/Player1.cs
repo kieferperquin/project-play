@@ -56,6 +56,15 @@ public class Player1 : MonoBehaviour
         {
             _rb2D.AddForce(10 * Vector3.down, ForceMode2D.Impulse);
         }
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            GetComponent<Transform>().eulerAngles = new Vector3(0, 180, 0);
+        }
+        if (Input.GetKeyDown(KeyCode.D))
+        {
+            GetComponent<Transform>().eulerAngles = new Vector3(0, 0, 0);
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)

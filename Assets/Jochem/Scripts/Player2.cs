@@ -52,21 +52,19 @@ public class Player2 : MonoBehaviour
             jumpCount = -1;
         }
 
-        if (Input.GetKeyDown(KeyCode.S))
+        if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             _rb2D.AddForce(10 * Vector3.down, ForceMode2D.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.LeftArrow))
         {
             GetComponent<Transform>().eulerAngles = new Vector3(0, 180, 0);
         }
-        if (Input.GetKeyDown(KeyCode.D))
+        if (Input.GetKeyDown(KeyCode.RightArrow))
         {
             GetComponent<Transform>().eulerAngles = new Vector3(0, 0, 0);
         }
-
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
