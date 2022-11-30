@@ -361,7 +361,7 @@ GameObject:
   - component: {fileID: 993527431}
   - component: {fileID: 993527430}
   - component: {fileID: 993527434}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform left
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -831,8 +831,8 @@ GameObject:
   - component: {fileID: 1278606953}
   - component: {fileID: 1278606952}
   m_Layer: 0
-  m_Name: Player
-  m_TagString: Untagged
+  m_Name: Player1
+  m_TagString: Player1
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1193,7 +1193,7 @@ GameObject:
   - component: {fileID: 1691454429}
   - component: {fileID: 1691454428}
   - component: {fileID: 1691454432}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Platform right
   m_TagString: Ground
   m_Icon: {fileID: 0}
