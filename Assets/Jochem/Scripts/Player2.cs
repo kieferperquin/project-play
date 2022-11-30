@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player2 : MonoBehaviour
 {
     public GameObject player;
 
     float speed;
     float jumpforce;
+    float playerInput;
 
     int jumpCount = 2;
 
@@ -25,12 +26,30 @@ public class Player : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.position += Vector3.right * speed * Input.GetAxis("Horizontal") * Time.deltaTime;
+        transform.position += Vector3.right * speed * playerInput * Time.deltaTime;
 
-        if (jumpCount > 0 && Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKey(KeyCode.RightArrow))
+        {
+            playerInput = 1;
+        }
+        if (Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            playerInput = 0;
+        }
+
+        if (Input.GetKey(KeyCode.LeftArrow))
+        {
+            playerInput = -1;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        {
+            playerInput = 0;
+        }
+
+        if (jumpCount > 0 && Input.GetKeyDown(KeyCode.UpArrow))
         {
             _rb2D.AddForce(jumpforce * Vector3.up, ForceMode2D.Impulse);
-            jumpCount =- 1;
+            jumpCount = -1;
         }
 
         if (Input.GetKeyDown(KeyCode.S))
@@ -47,7 +66,7 @@ public class Player : MonoBehaviour
             GetComponent<Transform>().eulerAngles = new Vector3(0, 0, 0);
         }
 
-        
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
