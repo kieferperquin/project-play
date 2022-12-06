@@ -6,19 +6,27 @@ public class PlayerMovement2 : MonoBehaviour
 {
     public GameObject player;
 
-    float speed;
-    float jumpforce;
-    float playerInput;
+    private float speed;
+    private float jumpforce;
+    private float playerInput = 0;
 
-    int jumpCount = 2;
+    private int jumpCount = 2;
+
+    private bool canDash = true;
+    private bool isDashing;
+    private float dashingPower = 25f;
+    private float dashingTime = 0.1f;
+    private float dashingCooldown = 1f;
 
     Rigidbody2D _rb2D;
     Collider2D playerCollider;
 
+    [SerializeField] private TrailRenderer tr;
+
     void Start()
     {
         speed = 6f;
-        jumpforce = 8f;
+        jumpforce = 12f;
         _rb2D = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
     }
@@ -26,6 +34,11 @@ public class PlayerMovement2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(isDashing)
+        {
+            return;
+        }
+
         transform.position += Vector3.right * speed * playerInput * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.RightArrow))
@@ -51,6 +64,11 @@ public class PlayerMovement2 : MonoBehaviour
             _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(jumpforce * Vector3.up, ForceMode2D.Impulse);
             jumpCount = -1;
+        }
+
+        if (Input.GetKeyDown("[6]") && canDash)
+        {
+            StartCoroutine(Dash());
         }
 
         if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -83,5 +101,22 @@ public class PlayerMovement2 : MonoBehaviour
         {
             jumpCount = 1;
         }
+    }
+
+    private IEnumerator Dash()
+    {
+        canDash = false;
+        isDashing = true;
+        float originalGravity = _rb2D.gravityScale;
+        _rb2D.gravityScale = 0f;
+        _rb2D.velocity = new Vector3((transform.localScale.x * playerInput) * dashingPower, 0f, 0f);
+        tr.emitting = true;
+        yield return new WaitForSeconds(dashingTime);
+        _rb2D.velocity = new Vector3(transform.localScale.x / dashingPower, 0f, 0f);
+        tr.emitting = false;
+        _rb2D.gravityScale = originalGravity;
+        isDashing = false;
+        yield return new WaitForSeconds(dashingCooldown);
+        canDash = true;
     }
 }
