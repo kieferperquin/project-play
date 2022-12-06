@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player2 : MonoBehaviour
+public class PlayerMovement1 : MonoBehaviour
 {
     public GameObject player;
 
     float speed;
     float jumpforce;
-    float playerInput;
+    float playerInput = 0;
 
     int jumpCount = 2;
 
@@ -17,7 +17,7 @@ public class Player2 : MonoBehaviour
 
     void Start()
     {
-        speed = 5f;
+        speed = 6f;
         jumpforce = 8f;
         _rb2D = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
@@ -28,40 +28,42 @@ public class Player2 : MonoBehaviour
     {
         transform.position += Vector3.right * speed * playerInput * Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.D))
         {
             playerInput = 1;
         }
-        if (Input.GetKeyUp(KeyCode.RightArrow))
+        if (Input.GetKeyUp(KeyCode.D))
         {
             playerInput = 0;
         }
 
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.A))
         {
             playerInput = -1;
         }
-        if (Input.GetKeyUp(KeyCode.LeftArrow))
+        if (Input.GetKeyUp(KeyCode.A))
         {
             playerInput = 0;
         }
 
-        if (jumpCount > 0 && Input.GetKeyDown(KeyCode.UpArrow))
+        if (jumpCount > 0 && Input.GetKeyDown(KeyCode.W))
         {
+            _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(jumpforce * Vector3.up, ForceMode2D.Impulse);
-            jumpCount = -1;
+            jumpCount =- 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow))
+        if (Input.GetKeyDown(KeyCode.S))
         {
+            _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(10 * Vector3.down, ForceMode2D.Impulse);
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftArrow))
+        if (Input.GetKeyDown(KeyCode.A))
         {
             GetComponent<Transform>().eulerAngles = new Vector3(0, 180, 0);
         }
-        if (Input.GetKeyDown(KeyCode.RightArrow))
+        if (Input.GetKeyDown(KeyCode.D))
         {
             GetComponent<Transform>().eulerAngles = new Vector3(0, 0, 0);
         }
