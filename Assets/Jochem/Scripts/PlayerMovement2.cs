@@ -17,7 +17,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     void Start()
     {
-        speed = 5f;
+        speed = 6f;
         jumpforce = 8f;
         _rb2D = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
