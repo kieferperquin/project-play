@@ -10,11 +10,16 @@ public class playerPref : MonoBehaviour
     public int player1Caracter;
     public int player2Caracter;
 
-    public int lifesP1;
-    public int lifesP2;
-    
-    public playerPref(int life)
+    public int lives;
+    public float speed;
+    public float jumpforce;
+    public int jumpCount = 2;
+
+    public playerPref(int life, float spd, float jumpf, int jumpc)
     {
-        this.lifesP1 = life;
+        this.lives = life;
+        this.speed = spd;
+        this.jumpforce = jumpf;
+        this.jumpCount = jumpc;
     }
 }

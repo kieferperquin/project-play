@@ -6,11 +6,7 @@ public class PlayerMovement1 : MonoBehaviour
 {
     public GameObject player;
 
-    private float speed;
-    private float jumpforce;
     private float playerInput = 0;
-
-    private int jumpCount = 2;
 
     private bool canDash = true;
     private bool isDashing;
@@ -23,10 +19,10 @@ public class PlayerMovement1 : MonoBehaviour
 
     [SerializeField] private TrailRenderer tr;
 
+    playerPref Player1 = new playerPref(3, 6f, 12f, 2);
+
     void Start()
     {
-        speed = 6f;
-        jumpforce = 12f;
         _rb2D = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
     }
@@ -39,7 +35,7 @@ public class PlayerMovement1 : MonoBehaviour
             return;
         }
 
-        transform.position += Vector3.right * speed * playerInput * Time.deltaTime;
+        transform.position += Vector3.right * Player1.speed * playerInput * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.D))
         {
