@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class playerPref : MonoBehaviour
+public class playerPref
 {
     public int audio;
     public int sfx;
