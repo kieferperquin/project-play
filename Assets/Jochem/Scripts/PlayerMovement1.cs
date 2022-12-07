@@ -10,16 +10,13 @@ public class PlayerMovement1 : MonoBehaviour
 
     private bool canDash = true;
     private bool isDashing;
-    private float dashingPower = 25f;
-    private float dashingTime = 0.1f;
-    private float dashingCooldown = 1f;
 
     Rigidbody2D _rb2D;
     Collider2D playerCollider;
 
     [SerializeField] private TrailRenderer tr;
 
-    playerPref Player1 = new playerPref(3, 6f, 12f, 2);
+    playerPref Player1 = new playerPref(3, 6f, 12f, 2, 25f, 0.1f, 1f);
 
     void Start()
     {
@@ -105,14 +102,14 @@ public class PlayerMovement1 : MonoBehaviour
         isDashing = true;
         float originalGravity = _rb2D.gravityScale;
         _rb2D.gravityScale = 0f;
-        _rb2D.velocity = new Vector3((transform.localScale.x * playerInput) * dashingPower, 0f, 0f);
+        _rb2D.velocity = new Vector3((transform.localScale.x * playerInput) * Player1.dashingPower, 0f, 0f);
         tr.emitting = true;
-        yield return new WaitForSeconds(dashingTime);
-        _rb2D.velocity = new Vector3(transform.localScale.x / dashingPower, 0f, 0f);
+        yield return new WaitForSeconds(Player1.dashingTime);
+        _rb2D.velocity = new Vector3(transform.localScale.x / Player1.dashingPower, 0f, 0f);
         tr.emitting = false;
         _rb2D.gravityScale = originalGravity;
         isDashing = false;
-        yield return new WaitForSeconds(dashingCooldown);
+        yield return new WaitForSeconds(Player1.dashingCooldown);
         canDash = true;
     }
 }

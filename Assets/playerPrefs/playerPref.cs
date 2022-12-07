@@ -13,13 +13,19 @@ public class playerPref : MonoBehaviour
     public int lives;
     public float speed;
     public float jumpforce;
-    public int jumpCount = 2;
+    public int jumpCount;
+    public float dashingPower;
+    public float dashingTime;
+    public float dashingCooldown;
 
-    public playerPref(int life, float spd, float jumpf, int jumpc)
+    public playerPref(int life, float spd, float jumpF, int jumpC, float dashingP, float dashingT, float dashingC)
     {
         this.lives = life;
         this.speed = spd;
-        this.jumpforce = jumpf;
-        this.jumpCount = jumpc;
+        this.jumpforce = jumpF;
+        this.jumpCount = jumpC;
+        this.dashingPower = dashingP;
+        this.dashingTime = dashingT;
+        this.dashingCooldown = dashingC;
     }
 }
