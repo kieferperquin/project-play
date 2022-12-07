@@ -576,7 +576,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: settings
+  m_text: close game
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -666,7 +666,7 @@ GameObject:
   - component: {fileID: 752932337}
   - component: {fileID: 752932336}
   m_Layer: 5
-  m_Name: settings
+  m_Name: quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -691,7 +691,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 6, y: -301}
-  m_SizeDelta: {x: 586.19, y: 116.84}
+  m_SizeDelta: {x: 432.04, y: 96.29}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &752932336
 MonoBehaviour:
@@ -739,7 +739,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 773846240}
         m_TargetAssemblyTypeName: sceneSwitching, Assembly-CSharp
-        m_MethodName: options
+        m_MethodName: quit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1622,7 +1622,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: home
+  m_text: menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2326,7 +2326,7 @@ GameObject:
   - component: {fileID: 1671376349}
   - component: {fileID: 1671376348}
   m_Layer: 5
-  m_Name: home
+  m_Name: menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
