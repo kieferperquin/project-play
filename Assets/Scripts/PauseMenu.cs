@@ -7,7 +7,6 @@ public class PauseMenu : MonoBehaviour // script for pause menu
 {
     public static bool GameIsPaused = false;
     public GameObject pauseMenuUI;
-    public int lifes;
 
     Animator anim;
     private void Start()
@@ -17,9 +16,6 @@ public class PauseMenu : MonoBehaviour // script for pause menu
 
     void Update()
     {
-        playerPref player1 = new playerPref(3);
-
-        player1.lifesP1 = lifes;
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             if (GameIsPaused)
