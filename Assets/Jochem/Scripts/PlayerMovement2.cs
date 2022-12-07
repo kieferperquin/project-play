@@ -6,11 +6,7 @@ public class PlayerMovement2 : MonoBehaviour
 {
     public GameObject player;
 
-    private float speed;
-    private float jumpforce;
     private float playerInput = 0;
-
-    private int jumpCount = 2;
 
     private bool canDash = true;
     private bool isDashing;
@@ -23,10 +19,12 @@ public class PlayerMovement2 : MonoBehaviour
 
     [SerializeField] private TrailRenderer tr;
 
+    playerPref Player2 = new playerPref(3, 6f, 12f, 2);
+
     void Start()
     {
-        speed = 6f;
-        jumpforce = 12f;
+        Player2.speed = 6f;
+        Player2. jumpforce = 12f;
         _rb2D = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
     }
@@ -39,7 +37,7 @@ public class PlayerMovement2 : MonoBehaviour
             return;
         }
 
-        transform.position += Vector3.right * speed * playerInput * Time.deltaTime;
+        transform.position += Vector3.right * Player2.speed * playerInput * Time.deltaTime;
 
         if (Input.GetKey(KeyCode.RightArrow))
         {
@@ -59,11 +57,11 @@ public class PlayerMovement2 : MonoBehaviour
             playerInput = 0;
         }
 
-        if (jumpCount > 0 && Input.GetKeyDown(KeyCode.UpArrow))
+        if (Player2.jumpCount > 0 && Input.GetKeyDown(KeyCode.UpArrow))
         {
             _rb2D.velocity = Vector3.zero;
-            _rb2D.AddForce(jumpforce * Vector3.up, ForceMode2D.Impulse);
-            jumpCount = -1;
+            _rb2D.AddForce(Player2.jumpforce * Vector3.up, ForceMode2D.Impulse);
+            Player2.jumpCount = -1;
         }
 
         if (Input.GetKeyDown("[6]") && canDash)
@@ -91,7 +89,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
         {
-            jumpCount = 2;
+            Player2.jumpCount = 2;
         }
     }
 
@@ -99,7 +97,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
         {
-            jumpCount = 1;
+            Player2.jumpCount = 1;
         }
     }
 

@@ -55,11 +55,11 @@ public class PlayerMovement1 : MonoBehaviour
             playerInput = 0;
         }
 
-        if (jumpCount > 0 && Input.GetKeyDown(KeyCode.W))
+        if (Player1.jumpCount > 0 && Input.GetKeyDown(KeyCode.W))
         {
             _rb2D.velocity = Vector3.zero;
-            _rb2D.AddForce(jumpforce * Vector3.up, ForceMode2D.Impulse);
-            jumpCount =- 1;
+            _rb2D.AddForce(Player1.jumpforce * Vector3.up, ForceMode2D.Impulse);
+            Player1.jumpCount =- 1;
         }
 
         if(Input.GetKeyDown(KeyCode.E) && canDash)
@@ -87,7 +87,7 @@ public class PlayerMovement1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
         {
-            jumpCount = 2;
+            Player1.jumpCount = 2;
         }
     }
 
@@ -95,7 +95,7 @@ public class PlayerMovement1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Ground") || collision.gameObject.CompareTag("Platform"))
         {
-            jumpCount = 1;
+            Player1.jumpCount = 1;
         }
     }
 
