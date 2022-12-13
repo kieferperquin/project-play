@@ -16,7 +16,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     [SerializeField] private TrailRenderer tr;
 
-    playerPref Player2 = new playerPref(3, 6f, 12f, 2, 25f, 0.1f, 1f);
+    playerPref Player2 = new playerPref(3, 6f, 5f, 0f, 12f, 2, 25f, 0.1f, 1f);
 
     void Start()
     {

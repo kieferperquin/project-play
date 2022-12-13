@@ -18,7 +18,7 @@ public class PlayerMovement1 : MonoBehaviour
 
     [SerializeField] private TrailRenderer tr;
 
-    playerPref Player1 = new playerPref(3, 6f, 12f, 2, 25f, 0.1f, 1f);
+    playerPref Player1 = new playerPref(3, 6f, 5f, 0f, 12f, 2, 25f, 0.1f, 1f);
 
     void Start()
     {
@@ -107,9 +107,10 @@ public class PlayerMovement1 : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("damage"))
         {
+            Player1.health += 5;
             Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
             _rb2D.velocity = Vector3.zero;
-            _rb2D.AddForce(moveDirection.normalized * 100f);
+            _rb2D.AddForce(moveDirection.normalized * (100f + 4f * Player1.health));
             StartCoroutine(Knocked());
         }
     }
@@ -134,6 +135,7 @@ public class PlayerMovement1 : MonoBehaviour
     private IEnumerator Knocked()
     {
         isKnocked = true;
+        playerCollider.sharedMaterial.bounciness = 1;
         yield return new WaitForSeconds(0.5f);
         isKnocked = false;
     }
