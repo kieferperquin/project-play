@@ -29,12 +29,12 @@ public class PlayerMovement1 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isKnocked)
+        if (isKnocked)
         {
             return;
         }
 
-        if(isDashing)
+        if (isDashing)
         {
             return;
         }
@@ -135,8 +135,7 @@ public class PlayerMovement1 : MonoBehaviour
     private IEnumerator Knocked()
     {
         isKnocked = true;
-        playerCollider.sharedMaterial.bounciness = 1;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.35f);
         isKnocked = false;
     }
 }
