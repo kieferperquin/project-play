@@ -11,8 +11,8 @@ public class PauseMenu : MonoBehaviour // script for pause menu
     Animator anim;
     private void Start()
     {
-        resume();
         anim = GetComponentInChildren<Animator>();
+        resume();
     }
 
     void Update()
