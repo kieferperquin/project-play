@@ -2,14 +2,6 @@ using UnityEngine;
 
 public class playerPref
 {
-    public int audio;
-    public int sfx;
-    public int ambience;
-    public int brightness;
-
-    public int player1Caracter;
-    public int player2Caracter;
-
     public int lives;
     public float speed;
     public float jumpforce;
