@@ -210,9 +210,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1257796042}
   m_Direction: 0
   m_MinValue: 0.0001
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939490a8af5fd5b4b8246be378fc363f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 0}
+  Mixer: {fileID: 24100000, guid: 13ccf1f5066264d4fb59c033a27c5e41, type: 2}
   AudioSource: {fileID: 0}
   ValueText: {fileID: 876808136}
   MixMode: 0
@@ -550,9 +550,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 645400475}
   m_Direction: 0
   m_MinValue: 0.0001
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939490a8af5fd5b4b8246be378fc363f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 0}
+  Mixer: {fileID: 24100000, guid: 13ccf1f5066264d4fb59c033a27c5e41, type: 2}
   AudioSource: {fileID: 0}
   ValueText: {fileID: 936598130}
   MixMode: 0
@@ -1644,7 +1644,6 @@ GameObject:
   m_Component:
   - component: {fileID: 971887689}
   - component: {fileID: 971887690}
-  - component: {fileID: 971887691}
   m_Layer: 5
   m_Name: brightnessSlider
   m_TagString: Untagged
@@ -1727,7 +1726,7 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 971887691}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: soundSlider, Assembly-CSharp
         m_MethodName: OnChangeSlider
         m_Mode: 0
@@ -1739,22 +1738,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &971887691
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 971887688}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 939490a8af5fd5b4b8246be378fc363f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Mixer: {fileID: 0}
-  AudioSource: {fileID: 0}
-  ValueText: {fileID: 47679354}
-  MixMode: 0
 --- !u!1 &1148646614
 GameObject:
   m_ObjectHideFlags: 0
@@ -2809,9 +2792,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 444124150}
   m_Direction: 0
   m_MinValue: 0.0001
-  m_MaxValue: 100
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 100
+  m_Value: 1
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
@@ -2839,7 +2822,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 939490a8af5fd5b4b8246be378fc363f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Mixer: {fileID: 0}
+  Mixer: {fileID: 24100000, guid: 13ccf1f5066264d4fb59c033a27c5e41, type: 2}
   AudioSource: {fileID: 0}
   ValueText: {fileID: 1466674093}
   MixMode: 0
