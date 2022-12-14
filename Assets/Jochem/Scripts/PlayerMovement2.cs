@@ -11,12 +11,14 @@ public class PlayerMovement2 : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
 
+    private bool isKnocked;
+
     Rigidbody2D _rb2D;
     Collider2D playerCollider;
 
     [SerializeField] private TrailRenderer tr;
 
-    playerPref Player2 = new playerPref(3, 6f, 12f, 2, 25f, 0.1f, 1f);
+    playerPref Player2 = new playerPref(3, 6f, 5f, 0f, 12f, 2, 25f, 0.1f, 1f);
 
     void Start()
     {
@@ -27,7 +29,12 @@ public class PlayerMovement2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(isDashing)
+        if (isKnocked)
+        {
+            return;
+        }
+
+        if (isDashing)
         {
             return;
         }
@@ -96,6 +103,18 @@ public class PlayerMovement2 : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("damage"))
+        {
+            Player2.health += 5;
+            Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
+            _rb2D.velocity = Vector3.zero;
+            _rb2D.AddForce(moveDirection.normalized * (100f + 4f * Player2.health));
+            StartCoroutine(Knocked());
+        }
+    }
+
     private IEnumerator Dash()
     {
         canDash = false;
@@ -111,5 +130,12 @@ public class PlayerMovement2 : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(Player2.dashingCooldown);
         canDash = true;
+    }
+
+    private IEnumerator Knocked()
+    {
+        isKnocked = true;
+        yield return new WaitForSeconds(0.35f);
+        isKnocked = false;
     }
 }

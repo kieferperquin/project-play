@@ -17,5 +17,8 @@ public class Player1Combat : MonoBehaviour
     {
         // play attack animation
         // detect opponent in range
+        // damage
+
+        
     }
 }
