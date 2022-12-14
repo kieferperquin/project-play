@@ -8,7 +8,8 @@ TagManager:
   - Player1
   - Player2
   - Platform
-  - damage
+  - Damage1
+  - Damage2
   layers:
   - Default
   - TransparentFX
