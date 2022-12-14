@@ -87,7 +87,6 @@ public class PlayerMovement1 : MonoBehaviour
                 StartCoroutine(AttackFront());
             }
         }
-        
 
         if (Input.GetKeyDown(KeyCode.E) && canDash)
         {
