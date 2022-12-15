@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class PlayerMovement1 : MonoBehaviour
 {
-    public GameObject player;
-
     private float playerInput = 0;
 
     private bool canDash = true;
     private bool isDashing;
 
+    private bool canAttack = true;
     private bool isKnocked;
 
     Rigidbody2D _rb2D;
@@ -20,10 +19,17 @@ public class PlayerMovement1 : MonoBehaviour
 
     playerPref Player1 = new playerPref(3, 6f, 5f, 0f, 12f, 2, 25f, 0.1f, 1f);
 
+    private GameObject FrontAttack;
+    private GameObject UpAttack;
+    private GameObject BottomAttack;
+
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
+        FrontAttack = transform.GetChild(0).gameObject;
+        UpAttack = transform.GetChild(1).gameObject;
+        BottomAttack = transform.GetChild(2).gameObject;
     }
 
     // Update is called once per frame
@@ -66,7 +72,23 @@ public class PlayerMovement1 : MonoBehaviour
             Player1.jumpCount =- 1;
         }
 
-        if(Input.GetKeyDown(KeyCode.E) && canDash)
+        if (Input.GetKeyDown(KeyCode.R) && canAttack)
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                StartCoroutine(AttackUp());
+            }
+            else if (Input.GetKey(KeyCode.S))
+            {
+                StartCoroutine(AttackDown());
+            }
+            else
+            {
+                StartCoroutine(AttackFront());
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -105,12 +127,13 @@ public class PlayerMovement1 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("damage"))
+        if (collision.gameObject.CompareTag("Damage2"))
         {
             Player1.health += 5;
             Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
             _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(moveDirection.normalized * (100f + 4f * Player1.health));
+            _rb2D.AddForce(1.1f * Vector3.up, ForceMode2D.Impulse);
             StartCoroutine(Knocked());
         }
     }
@@ -130,6 +153,34 @@ public class PlayerMovement1 : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(Player1.dashingCooldown);
         canDash = true;
+    }
+
+    private IEnumerator AttackFront()
+    {
+        canAttack = false;
+        FrontAttack.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        FrontAttack.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        canAttack = true;
+    }
+    private IEnumerator AttackUp()
+    {
+        canAttack = false;
+        UpAttack.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        UpAttack.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        canAttack = true;
+    }
+    private IEnumerator AttackDown()
+    {
+        canAttack = false;
+        BottomAttack.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        BottomAttack.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        canAttack = true;
     }
 
     private IEnumerator Knocked()

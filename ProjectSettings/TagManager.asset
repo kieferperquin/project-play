@@ -10,6 +10,8 @@ TagManager:
   - Platform
   - damage
   - Music
+  - Damage1
+  - Damage2
   layers:
   - Default
   - TransparentFX

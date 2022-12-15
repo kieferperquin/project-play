@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlayerMovement2 : MonoBehaviour
 {
-    public GameObject player;
-
     private float playerInput = 0;
 
     private bool canDash = true;
@@ -20,10 +18,17 @@ public class PlayerMovement2 : MonoBehaviour
 
     playerPref Player2 = new playerPref(3, 6f, 5f, 0f, 12f, 2, 25f, 0.1f, 1f);
 
+    private GameObject FrontAttack;
+    private GameObject UpAttack;
+    private GameObject BottomAttack;
+
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
         playerCollider = GetComponent<BoxCollider2D>();
+        FrontAttack = transform.GetChild(0).gameObject;
+        UpAttack = transform.GetChild(1).gameObject;
+        BottomAttack = transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -105,12 +110,13 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("damage"))
+        if (collision.gameObject.CompareTag("Damage1"))
         {
             Player2.health += 5;
             Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
             _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(moveDirection.normalized * (100f + 4f * Player2.health));
+            _rb2D.AddForce(5 * Vector3.up, ForceMode2D.Impulse);
             StartCoroutine(Knocked());
         }
     }
