@@ -1851,6 +1851,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1071443377}
   - component: {fileID: 1071443378}
+  - component: {fileID: 1071443379}
   m_Layer: 0
   m_Name: SFX
   m_TagString: Untagged
@@ -1890,6 +1891,18 @@ MonoBehaviour:
   soundEffectsSlider: {fileID: 43342305}
   backgroundAudio: {fileID: 984012426}
   soundEffectsAudio: []
+--- !u!114 &1071443379
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1071443376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3390a0d2d5999f647aa6996420a4f55e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1148646614
 GameObject:
   m_ObjectHideFlags: 0
