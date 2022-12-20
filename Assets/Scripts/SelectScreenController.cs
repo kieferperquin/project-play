@@ -63,19 +63,19 @@ public class SelectScreenController : MonoBehaviour
             switch (amountDown)
             {
                 case 0:
-                    arrow.transform.position = new Vector2(transform.position.x, 1.3f);
+                    arrow.transform.position = new Vector2(6.7f, 1.3f);
                     break;
 
                 case 1:
-                    arrow.transform.position = new Vector2(transform.position.x, -0.45f);
+                    arrow.transform.position = new Vector2(6.7f, -0.45f);
                     break;
 
                 case 2:
-                    arrow.transform.position = new Vector2(transform.position.x, -2f);
+                    arrow.transform.position = new Vector2(6.7f, -2f);
                     break;
 
                 case 3:
-                    arrow.transform.position = new Vector2(transform.position.x, -3.45f);
+                    arrow.transform.position = new Vector2(6.7f, -3.45f);
                     break;
 
                 default:
