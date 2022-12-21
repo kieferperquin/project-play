@@ -58,29 +58,29 @@ public class SelectScreenController : MonoBehaviour
                 updateArrowPos();
             }
         }
-        void updateArrowPos()
+    }
+    void updateArrowPos()
+    {
+        switch (amountDown)
         {
-            switch (amountDown)
-            {
-                case 0:
-                    arrow.transform.position = new Vector2(6.7f, 1.3f);
-                    break;
+            case 0:
+                arrow.transform.position = new Vector2(6.7f, 1.3f);
+                break;
 
-                case 1:
-                    arrow.transform.position = new Vector2(6.7f, -0.45f);
-                    break;
+            case 1:
+                arrow.transform.position = new Vector2(6.7f, -0.45f);
+                break;
 
-                case 2:
-                    arrow.transform.position = new Vector2(6.7f, -2f);
-                    break;
+            case 2:
+                arrow.transform.position = new Vector2(6.7f, -2f);
+                break;
 
-                case 3:
-                    arrow.transform.position = new Vector2(6.7f, -3.45f);
-                    break;
+            case 3:
+                arrow.transform.position = new Vector2(6.7f, -3.45f);
+                break;
 
-                default:
-                    break;
-            }
+            default:
+                break;
         }
     }
 }
