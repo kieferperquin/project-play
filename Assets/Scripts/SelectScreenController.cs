@@ -8,6 +8,11 @@ public class SelectScreenController : MonoBehaviour
     int amountDown = 0;
     public GameObject arrow;
 
+    private void Start()
+    {
+        updateArrowPos();
+    }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))

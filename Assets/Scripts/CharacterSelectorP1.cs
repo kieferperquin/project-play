@@ -6,7 +6,9 @@ using UnityEngine.SceneManagement;
 public class CharacterSelectorP1 : MonoBehaviour
 {
     int select = 0;
+    int selected;
     public GameObject arrow;
+    public GameObject selector;
     bool P1Selected = false;
     private static readonly string CharacterP1Pref = "CharacterP1Pref";
 
@@ -26,6 +28,8 @@ public class CharacterSelectorP1 : MonoBehaviour
         {
             PlayerPrefs.SetInt(CharacterP1Pref, select);
             P1Selected = true;
+            selected = select;
+            SetSelected();
         }
         if (Input.GetKeyDown(KeyCode.W))
         {
@@ -102,6 +106,39 @@ public class CharacterSelectorP1 : MonoBehaviour
 
             case 5:
                 arrow.transform.position = new Vector2(4.2f, 0.1f);
+                break;
+
+            default:
+                break;
+        }
+    }
+
+    void SetSelected()
+    {
+        switch (selected)
+        {
+            case 0:
+                selector.transform.position = new Vector3(-2.2f, 3.3f, 2f);
+                break;
+
+            case 1:
+                selector.transform.position = new Vector3(1.2f, 3.3f, 2f);
+                break;
+
+            case 2:
+                selector.transform.position = new Vector3(4.2f, 3.3f, 2f);
+                break;
+
+            case 3:
+                selector.transform.position = new Vector3(-2.2f, 0.1f, 2f);
+                break;
+
+            case 4:
+                selector.transform.position = new Vector3(1.2f, 0.1f, 2f);
+                break;
+
+            case 5:
+                selector.transform.position = new Vector3(4.2f, 0.1f, 2f);
                 break;
 
             default:
