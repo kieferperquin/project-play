@@ -12,8 +12,11 @@ public class AudioManager : MonoBehaviour
     public AudioSource backgroundAudio;
     public AudioSource[] soundEffectsAudio;
 
+    public float value;
+
     void Start()
     {
+        backgroundAudio = DontDestroy.instance.gameObject.GetComponentInChildren<AudioSource>();
         firstPlayInt = PlayerPrefs.GetInt(FirstPlay);
 
         if (firstPlayInt == 0)
