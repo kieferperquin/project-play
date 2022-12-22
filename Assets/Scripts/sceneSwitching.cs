@@ -29,6 +29,10 @@ public class sceneSwitching : MonoBehaviour
     {
         SceneManager.LoadScene("map1");
     }
+    public void testScene()
+    {
+        SceneManager.LoadScene("mapTest");
+    }
     public void quit()
     {
         Application.Quit();
