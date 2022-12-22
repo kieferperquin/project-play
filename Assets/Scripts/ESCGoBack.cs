@@ -17,10 +17,6 @@ public class ESCGoBack : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (sceneName == "start")
-            {
-                Application.Quit();
-            }
             if (sceneName == "options")
             {
                 SceneManager.LoadScene("start");
