@@ -11,6 +11,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private bool canAttack = true;
     private bool isKnocked;
+    private bool isBlocking;
 
     Rigidbody2D _rb2D;
     Collider2D playerCollider;
@@ -22,6 +23,7 @@ public class PlayerMovement2 : MonoBehaviour
     private GameObject FrontAttack;
     private GameObject UpAttack;
     private GameObject BottomAttack;
+    private GameObject Shield;
 
     void Start()
     {
@@ -30,6 +32,7 @@ public class PlayerMovement2 : MonoBehaviour
         FrontAttack = transform.GetChild(0).gameObject;
         UpAttack = transform.GetChild(1).gameObject;
         BottomAttack = transform.GetChild(2).gameObject;
+        Shield = transform.GetChild(3).gameObject;
     }
 
     // Update is called once per frame
@@ -70,6 +73,19 @@ public class PlayerMovement2 : MonoBehaviour
             _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(Player2.jumpforce * Vector3.up, ForceMode2D.Impulse);
             Player2.jumpCount =- 1;
+        }
+
+        if(Input.GetKey(KeyCode.Keypad5))
+        {
+            isBlocking = true;
+            Shield.SetActive(true);
+            Player2.speed = 0.5f;
+        }
+        if(Input.GetKeyUp(KeyCode.Keypad5))
+        {
+            isBlocking = false;
+            Shield.SetActive(false);
+            Player2.speed = 6f;
         }
 
         if (Input.GetKeyDown(KeyCode.Keypad7) && canAttack)
@@ -141,7 +157,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Damage1"))
+        if (collision.gameObject.CompareTag("Damage1") && isBlocking == false)
         {
             Player2.health += 5;
             Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
@@ -149,6 +165,14 @@ public class PlayerMovement2 : MonoBehaviour
             _rb2D.AddForce(moveDirection.normalized * (100f + 4f * Player2.health));
             _rb2D.AddForce(5 * Vector3.up, ForceMode2D.Impulse);
             StartCoroutine(Knocked());
+        }
+        if (collision.gameObject.CompareTag("Damage1") && isBlocking == true)
+        {
+            Player2.health += 2;
+            Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
+            _rb2D.velocity = Vector3.zero;
+            _rb2D.AddForce(moveDirection.normalized * (100f + 2f * Player2.health));
+            _rb2D.AddForce(1.1f * Vector3.up, ForceMode2D.Impulse);
         }
     }
 
