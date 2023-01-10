@@ -154,7 +154,7 @@ public class PlayerMovement2 : MonoBehaviour
 
     private IEnumerator Death()
     {
-        _rb2D.constraints = RigidbodyConstraints2D.FreezePosition;
+        _rb2D.constraints = RigidbodyConstraints2D.FreezeAll;
         isKnocked = true;
         yield return new WaitForSeconds(2f);
         _rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
