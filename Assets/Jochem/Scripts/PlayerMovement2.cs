@@ -9,6 +9,7 @@ public class PlayerMovement2 : MonoBehaviour
     private bool canDash = true;
     private bool isDashing;
 
+    private bool canAttack = true;
     private bool isKnocked;
 
     Rigidbody2D _rb2D;
@@ -28,7 +29,7 @@ public class PlayerMovement2 : MonoBehaviour
         playerCollider = GetComponent<BoxCollider2D>();
         FrontAttack = transform.GetChild(0).gameObject;
         UpAttack = transform.GetChild(1).gameObject;
-        BottomAttack = transform.GetChild(0).gameObject;
+        BottomAttack = transform.GetChild(2).gameObject;
     }
 
     // Update is called once per frame
@@ -68,10 +69,26 @@ public class PlayerMovement2 : MonoBehaviour
         {
             _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(Player2.jumpforce * Vector3.up, ForceMode2D.Impulse);
-            Player2.jumpCount = -1;
+            Player2.jumpCount =- 1;
         }
 
-        if (Input.GetKeyDown("[6]") && canDash)
+        if (Input.GetKeyDown(KeyCode.Keypad7) && canAttack)
+        {
+            if (Input.GetKey(KeyCode.UpArrow))
+            {
+                StartCoroutine(AttackUp());
+            }
+            else if (Input.GetKey(KeyCode.DownArrow))
+            {
+                StartCoroutine(AttackDown());
+            }
+            else
+            {
+                StartCoroutine(AttackFront());
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Keypad6) && canDash)
         {
             StartCoroutine(Dash());
         }
@@ -98,6 +115,20 @@ public class PlayerMovement2 : MonoBehaviour
         {
             Player2.jumpCount = 2;
         }
+
+        if (collision.gameObject.CompareTag("Border"))
+        {
+            Player2.lives -= 1;
+
+            if (Player2.lives > 0)
+            {
+                StartCoroutine(Death());
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -121,6 +152,16 @@ public class PlayerMovement2 : MonoBehaviour
         }
     }
 
+    private IEnumerator Death()
+    {
+        _rb2D.constraints = RigidbodyConstraints2D.FreezePosition;
+        isKnocked = true;
+        yield return new WaitForSeconds(2f);
+        _rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        isKnocked = false;
+        transform.position = new Vector3(0, 0, 1);
+    }
+
     private IEnumerator Dash()
     {
         canDash = false;
@@ -136,6 +177,34 @@ public class PlayerMovement2 : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(Player2.dashingCooldown);
         canDash = true;
+    }
+
+    private IEnumerator AttackFront()
+    {
+        canAttack = false;
+        FrontAttack.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        FrontAttack.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        canAttack = true;
+    }
+    private IEnumerator AttackUp()
+    {
+        canAttack = false;
+        UpAttack.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        UpAttack.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        canAttack = true;
+    }
+    private IEnumerator AttackDown()
+    {
+        canAttack = false;
+        BottomAttack.SetActive(true);
+        yield return new WaitForSeconds(0.1f);
+        BottomAttack.SetActive(false);
+        yield return new WaitForSeconds(0.3f);
+        canAttack = true;
     }
 
     private IEnumerator Knocked()

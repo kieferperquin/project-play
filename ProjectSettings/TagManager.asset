@@ -12,6 +12,7 @@ TagManager:
   - Music
   - Damage1
   - Damage2
+  - Border
   layers:
   - Default
   - TransparentFX

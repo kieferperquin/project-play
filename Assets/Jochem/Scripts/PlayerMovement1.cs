@@ -115,6 +115,20 @@ public class PlayerMovement1 : MonoBehaviour
         {
             Player1.jumpCount = 2;
         }
+
+        if (collision.gameObject.CompareTag("Border"))
+        {
+            Player1.lives -= 1;
+
+            if (Player1.lives > 0)
+            {
+                StartCoroutine(Death());
+            }
+            else
+            {
+                gameObject.SetActive(false);
+            }
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -136,6 +150,18 @@ public class PlayerMovement1 : MonoBehaviour
             _rb2D.AddForce(1.1f * Vector3.up, ForceMode2D.Impulse);
             StartCoroutine(Knocked());
         }
+    }
+
+
+    private IEnumerator Death()
+    {
+        _rb2D.constraints = RigidbodyConstraints2D.FreezePosition;
+        isKnocked = true;
+        yield return new WaitForSeconds(2f);
+        _rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
+        isKnocked = false;
+        _rb2D.velocity = Vector3.zero;
+        transform.position = new Vector3(0, 0, 1);
     }
 
     private IEnumerator Dash()
