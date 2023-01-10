@@ -9,7 +9,11 @@ public class CharacterPrefLoad : MonoBehaviour
     int P1ChosenCharacter;
     int P2ChosenCharacter;
 
-    int messagesSent = 0;
+    public GameObject scientistP1;
+    public GameObject gladiatorP1;
+    public GameObject scientistP2;
+    public GameObject gladiatorP2;
+
     void awake()
     {
         loadCharacterChosen();
@@ -23,11 +27,6 @@ public class CharacterPrefLoad : MonoBehaviour
 
     private void Update()
     {
-        if (messagesSent == 1)
-        {
-            Debug.Log(PlayerPrefs.GetInt(CharacterP1Pref));
-            Debug.Log(PlayerPrefs.GetInt(CharacterP2Pref));
-        }
-        messagesSent++;
+        
     }
 }
