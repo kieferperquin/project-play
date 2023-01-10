@@ -2420,9 +2420,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: hands
       objectReference: {fileID: 0}
+    - target: {fileID: 4446433609266236439, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.765
+      objectReference: {fileID: 0}
     - target: {fileID: 6830009236777929126, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
       propertyPath: m_LocalPosition.z
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888102025308655158, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7048313612036096449, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
       propertyPath: m_RootOrder
