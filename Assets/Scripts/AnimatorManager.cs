@@ -12,7 +12,6 @@ public class AnimatorManager : MonoBehaviour
     void Start()
     {
         anim = GetComponent<Animator>();
-        spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
     }
 
    
