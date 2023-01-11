@@ -41,23 +41,10 @@ public class AnimatorManagerPlayer1 : MonoBehaviour
 
         anim.SetInteger("MoveDir", MovementInt);
 
-        if (Input.GetKeyDown(KeyCode.W))
-        {
-            anim.SetBool("Jump", true);
-        }
-
         /*if (Input.GetKeyDown(KeyCode.R))
         {
             anim.SetTrigger("punch");
         }*/
-    }
-
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.tag == "Ground")
-        {
-            anim.SetBool("Jump", true);
-        }
     }
 
     public static void Punch()
