@@ -10,6 +10,7 @@ public class PlayerMovement1 : MonoBehaviour
     private bool isDashing;
 
     private bool canAttack = true;
+    private bool canBlock = true;
     private bool isKnocked;
     private bool isBlocking;
 
@@ -76,7 +77,7 @@ public class PlayerMovement1 : MonoBehaviour
             Player1.jumpCount =- 1;
         }
 
-        if (Input.GetKey(KeyCode.LeftControl))
+        if (Input.GetKey(KeyCode.LeftControl) && canBlock == true)
         {
             isBlocking = true;
             canDash = false;
@@ -170,7 +171,7 @@ public class PlayerMovement1 : MonoBehaviour
             Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
             _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(moveDirection.normalized * (100f + 4f * Player1.health));
-            _rb2D.AddForce(1.1f * Vector3.up, ForceMode2D.Impulse);
+            _rb2D.AddForce(5 * Vector3.up, ForceMode2D.Impulse);
             StartCoroutine(Knocked());
         }
         if (collision.gameObject.CompareTag("Damage2") && isBlocking == true)
@@ -182,7 +183,6 @@ public class PlayerMovement1 : MonoBehaviour
             _rb2D.AddForce(1.1f * Vector3.up, ForceMode2D.Impulse);
         }
     }
-
 
     private IEnumerator Death()
     {
@@ -200,6 +200,7 @@ public class PlayerMovement1 : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        canBlock = false;
         float originalGravity = _rb2D.gravityScale;
         _rb2D.gravityScale = 0f;
         _rb2D.velocity = new Vector3((transform.localScale.x * playerInput) * Player1.dashingPower, 0f, 0f);
@@ -209,6 +210,7 @@ public class PlayerMovement1 : MonoBehaviour
         tr.emitting = false;
         _rb2D.gravityScale = originalGravity;
         isDashing = false;
+        canBlock = true;
         yield return new WaitForSeconds(Player1.dashingCooldown);
         canDash = true;
     }
@@ -216,6 +218,7 @@ public class PlayerMovement1 : MonoBehaviour
     private IEnumerator AttackFront()
     {
         canAttack = false;
+        canBlock = false;
         AnimatorManagerPlayer1.Punch();
         yield return new WaitForSeconds(0.2f);
         FrontAttack.SetActive(true);
@@ -223,10 +226,12 @@ public class PlayerMovement1 : MonoBehaviour
         FrontAttack.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         canAttack = true;
+        canBlock = true;
     }
     private IEnumerator AttackUp()
     {
         canAttack = false;
+        canBlock = false;
         AnimatorManagerPlayer1.Uppercut();
         yield return new WaitForSeconds(0.2f);
         UpAttack.SetActive(true);
@@ -234,10 +239,12 @@ public class PlayerMovement1 : MonoBehaviour
         UpAttack.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         canAttack = true;
+        canBlock = true;
     }
     private IEnumerator AttackDown()
     {
         canAttack = false;
+        canBlock = false;
         AnimatorManagerPlayer1.Lowblow();
         yield return new WaitForSeconds(0.2f);
         BottomAttack.SetActive(true);
@@ -245,6 +252,7 @@ public class PlayerMovement1 : MonoBehaviour
         BottomAttack.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         canAttack = true;
+        canBlock = true;
     }
 
     private IEnumerator Knocked()
