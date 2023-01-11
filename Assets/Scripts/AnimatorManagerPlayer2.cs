@@ -41,11 +41,6 @@ public class AnimatorManagerPlayer2 : MonoBehaviour
 
         anim.SetInteger("MoveDir", MovementInt);
 
-        if (Input.GetKeyDown(KeyCode.UpArrow))
-        {
-            anim.SetBool("Jump", true);
-        }
-
         /*if (Input.GetKeyDown(KeyCode.R))
         {
             anim.SetTrigger("punch");
