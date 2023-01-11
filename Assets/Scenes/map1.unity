@@ -2763,7 +2763,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee0a1e65c40d23042bc94313a1dab3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  P1scientist: {fileID: 0}
+  P1scientist: {fileID: 7893034473726504186, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
   P1gladiator: {fileID: 0}
   P2scientist: {fileID: 0}
   P2gladiator: {fileID: 0}

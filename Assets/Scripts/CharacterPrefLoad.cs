@@ -25,6 +25,8 @@ public class CharacterPrefLoad : MonoBehaviour
     {
         P1ChosenCharacter = PlayerPrefs.GetInt(CharacterP1Pref);
         P2ChosenCharacter = PlayerPrefs.GetInt(CharacterP2Pref);
+        Debug.Log(P1ChosenCharacter);
+        Debug.Log(P2ChosenCharacter);
     }
 
     void SpawnP1Player()
