@@ -213,15 +213,15 @@ public class PauseMenu : MonoBehaviour
         switch (amountDown)
         {
             case 0:
-                arrowP1.transform.position = new Vector3(4f, 0.75f, -9.5f);
+                arrowP1.transform.position = new Vector3(5f, 1.25f, -9.5f);
                 break;
 
             case 1:
-                arrowP1.transform.position = new Vector3(4f, -1f, -9.5f);
+                arrowP1.transform.position = new Vector3(3.3f, -1f, -9.5f);
                 break;
 
             case 2:
-                arrowP1.transform.position = new Vector3(4f, -2.5f, -9.5f);
+                arrowP1.transform.position = new Vector3(2.8f, -2.5f, -9.5f);
                 break;
 
             default:
@@ -233,15 +233,15 @@ public class PauseMenu : MonoBehaviour
         switch (amountDown)
         {
             case 0:
-                arrowP2.transform.position = new Vector3(4f, 0.75f, -9.5f);
+                arrowP2.transform.position = new Vector3(5f, 1.25f, -9.5f);
                 break;
 
             case 1:
-                arrowP2.transform.position = new Vector3(4f, -1f, -9.5f);
+                arrowP2.transform.position = new Vector3(3.3f, -1f, -9.5f);
                 break;
 
             case 2:
-                arrowP2.transform.position = new Vector3(4f, -2.5f, -9.5f);
+                arrowP2.transform.position = new Vector3(2.8f, -2.5f, -9.5f);
                 break;
 
             default:
