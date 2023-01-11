@@ -78,6 +78,7 @@ public class PlayerMovement1 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             isBlocking = true;
+            AnimatorManagerPlayer1.anim.SetBool("blocking", true);
             Shield.SetActive(true);
             Player1.speed = 0.5f;
 
@@ -209,6 +210,8 @@ public class PlayerMovement1 : MonoBehaviour
     private IEnumerator AttackFront()
     {
         canAttack = false;
+        AnimatorManagerPlayer1.Punch();
+        yield return new WaitForSeconds(0.2f);
         FrontAttack.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         FrontAttack.SetActive(false);

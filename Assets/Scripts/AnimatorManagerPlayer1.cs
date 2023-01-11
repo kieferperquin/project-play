@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AnimatorManager : MonoBehaviour
+public class AnimatorManagerPlayer1 : MonoBehaviour
 {
-    private Animator anim;
-    private SpriteRenderer spriteRenderer;
+    public static Animator anim;
 
     public Rigidbody2D _rb2D;
+
+    private int MovementInt = 0;
 
     void Start()
     {
@@ -17,21 +18,35 @@ public class AnimatorManager : MonoBehaviour
    
     void Update()
     {
-        int MovementInt = Mathf.RoundToInt(Input.GetAxis("Horizontal"));
+        if (Input.GetKey(KeyCode.D))
+        {
+            MovementInt = 1;
+        }
+        if (Input.GetKeyUp(KeyCode.D))
+        {
+            MovementInt = 0;
+        }
+
+        if (Input.GetKey(KeyCode.A))
+        {
+            MovementInt = -1;
+        }
+        if (Input.GetKeyUp(KeyCode.A))
+        {
+            MovementInt = 0;
+        }
 
         anim.SetInteger("MoveDir", MovementInt);
 
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.W))
         {
             anim.SetBool("Jump", true);
         }
 
-        anim.SetFloat("yVelocity", _rb2D.velocity.y);
-
-        if (Input.GetKeyDown(KeyCode.R))
+        /*if (Input.GetKeyDown(KeyCode.R))
         {
-            StartCoroutine(Shoot());
-        }
+            anim.SetTrigger("punch");
+        }*/
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -55,11 +70,13 @@ public class AnimatorManager : MonoBehaviour
         }
     }
 
-    IEnumerator Shoot()
+    public static void Punch()
     {
-        anim.SetBool("Shooting", true);
-        yield return new WaitForSeconds(0.35f);
-        anim.SetBool("Shooting", false);
-        StopCoroutine(Shoot());
+        anim.SetTrigger("punch");
+    }
+
+    public static void Dash()
+    {
+        anim.SetTrigger("punch");
     }
 }
