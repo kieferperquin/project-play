@@ -10,6 +10,7 @@ public class PlayerMovement2 : MonoBehaviour
     private bool isDashing;
 
     private bool canAttack = true;
+    private bool canBlock = true;
     private bool isKnocked;
     private bool isBlocking;
 
@@ -71,16 +72,16 @@ public class PlayerMovement2 : MonoBehaviour
         if (Player2.jumpCount > 0 && Input.GetKeyDown(KeyCode.UpArrow))
         {
             _rb2D.velocity = Vector3.zero;
-            AnimatorManagerPlayer1.anim.SetTrigger("jump");
+            AnimatorManagerPlayer2.anim.SetTrigger("jump");
             _rb2D.AddForce(Player2.jumpforce * Vector3.up, ForceMode2D.Impulse);
             Player2.jumpCount =- 1;
         }
 
-        if(Input.GetKey(KeyCode.Keypad5))
+        if(Input.GetKey(KeyCode.Keypad5) && canBlock == true)
         {
             isBlocking = true;
             canDash = false;
-            AnimatorManagerPlayer1.anim.SetBool("blocking", true);
+            AnimatorManagerPlayer2.anim.SetBool("blocking", true);
             Shield.SetActive(true);
             Player2.speed = 0.5f;
         }
@@ -88,7 +89,7 @@ public class PlayerMovement2 : MonoBehaviour
         {
             isBlocking = false;
             canDash = true;
-            AnimatorManagerPlayer1.anim.SetBool("blocking", false);
+            AnimatorManagerPlayer2.anim.SetBool("blocking", false);
             Shield.SetActive(false);
             Player2.speed = 6f;
         }
@@ -189,6 +190,7 @@ public class PlayerMovement2 : MonoBehaviour
         yield return new WaitForSeconds(2f);
         _rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         isKnocked = false;
+        _rb2D.velocity = Vector3.zero;
         Player2.health = 0;
         transform.position = new Vector3(0, 0, 1);
     }
@@ -197,6 +199,7 @@ public class PlayerMovement2 : MonoBehaviour
     {
         canDash = false;
         isDashing = true;
+        canBlock = false;
         float originalGravity = _rb2D.gravityScale;
         _rb2D.gravityScale = 0f;
         _rb2D.velocity = new Vector3((transform.localScale.x * playerInput) * Player2.dashingPower, 0f, 0f);
@@ -206,6 +209,7 @@ public class PlayerMovement2 : MonoBehaviour
         tr.emitting = false;
         _rb2D.gravityScale = originalGravity;
         isDashing = false;
+        canBlock = true;
         yield return new WaitForSeconds(Player2.dashingCooldown);
         canDash = true;
     }
@@ -213,6 +217,7 @@ public class PlayerMovement2 : MonoBehaviour
     private IEnumerator AttackFront()
     {
         canAttack = false;
+        canBlock = false;
         AnimatorManagerPlayer2.Punch();
         yield return new WaitForSeconds(0.2f);
         FrontAttack.SetActive(true);
@@ -220,10 +225,12 @@ public class PlayerMovement2 : MonoBehaviour
         FrontAttack.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         canAttack = true;
+        canBlock = true;
     }
     private IEnumerator AttackUp()
     {
         canAttack = false;
+        canBlock = false;
         AnimatorManagerPlayer2.Uppercut();
         yield return new WaitForSeconds(0.2f);
         UpAttack.SetActive(true);
@@ -231,10 +238,12 @@ public class PlayerMovement2 : MonoBehaviour
         UpAttack.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         canAttack = true;
+        canBlock = true;
     }
     private IEnumerator AttackDown()
     {
         canAttack = false;
+        canBlock = false;
         AnimatorManagerPlayer2.Lowblow();
         yield return new WaitForSeconds(0.2f);
         BottomAttack.SetActive(true);
@@ -242,6 +251,7 @@ public class PlayerMovement2 : MonoBehaviour
         BottomAttack.SetActive(false);
         yield return new WaitForSeconds(0.3f);
         canAttack = true;
+        canBlock = true;
     }
 
     private IEnumerator Knocked()
