@@ -71,6 +71,7 @@ public class PlayerMovement2 : MonoBehaviour
         if (Player2.jumpCount > 0 && Input.GetKeyDown(KeyCode.UpArrow))
         {
             _rb2D.velocity = Vector3.zero;
+            AnimatorManagerPlayer1.anim.SetTrigger("jump");
             _rb2D.AddForce(Player2.jumpforce * Vector3.up, ForceMode2D.Impulse);
             Player2.jumpCount =- 1;
         }
@@ -78,12 +79,16 @@ public class PlayerMovement2 : MonoBehaviour
         if(Input.GetKey(KeyCode.Keypad5))
         {
             isBlocking = true;
+            canDash = false;
+            AnimatorManagerPlayer1.anim.SetBool("blocking", true);
             Shield.SetActive(true);
             Player2.speed = 0.5f;
         }
         if(Input.GetKeyUp(KeyCode.Keypad5))
         {
             isBlocking = false;
+            canDash = true;
+            AnimatorManagerPlayer1.anim.SetBool("blocking", false);
             Shield.SetActive(false);
             Player2.speed = 6f;
         }
@@ -160,6 +165,7 @@ public class PlayerMovement2 : MonoBehaviour
         if (collision.gameObject.CompareTag("Damage1") && isBlocking == false)
         {
             Player2.health += 5;
+            AnimatorManagerPlayer2.anim.SetTrigger("getsDamaged");
             Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
             _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(moveDirection.normalized * (100f + 4f * Player2.health));
@@ -207,6 +213,8 @@ public class PlayerMovement2 : MonoBehaviour
     private IEnumerator AttackFront()
     {
         canAttack = false;
+        AnimatorManagerPlayer2.Punch();
+        yield return new WaitForSeconds(0.2f);
         FrontAttack.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         FrontAttack.SetActive(false);
@@ -216,6 +224,8 @@ public class PlayerMovement2 : MonoBehaviour
     private IEnumerator AttackUp()
     {
         canAttack = false;
+        AnimatorManagerPlayer2.Uppercut();
+        yield return new WaitForSeconds(0.2f);
         UpAttack.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         UpAttack.SetActive(false);
@@ -225,6 +235,8 @@ public class PlayerMovement2 : MonoBehaviour
     private IEnumerator AttackDown()
     {
         canAttack = false;
+        AnimatorManagerPlayer2.Lowblow();
+        yield return new WaitForSeconds(0.2f);
         BottomAttack.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         BottomAttack.SetActive(false);
