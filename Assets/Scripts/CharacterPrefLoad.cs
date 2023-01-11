@@ -14,7 +14,7 @@ public class CharacterPrefLoad : MonoBehaviour
     public GameObject P2scientist;
     public GameObject P2gladiator;
 
-    void awake()
+    void Awake()
     {
         loadCharacterChosen();
         SpawnP1Player();
@@ -25,28 +25,30 @@ public class CharacterPrefLoad : MonoBehaviour
     {
         P1ChosenCharacter = PlayerPrefs.GetInt(CharacterP1Pref);
         P2ChosenCharacter = PlayerPrefs.GetInt(CharacterP2Pref);
+        Debug.Log(P1ChosenCharacter);
+        Debug.Log(P2ChosenCharacter);
     }
 
     void SpawnP1Player()
     {
         switch (P1ChosenCharacter)
         {
-            case 1:
+            case 0:
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
                 break;
-            case 2:
+            case 1:
                 Instantiate(P1gladiator, new Vector3(-6, -2.65f, 0), Quaternion.identity);
                 break;
-            case 3: //cyborg
+            case 2: //cyborg
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
                 break;
-            case 4: //ice man
+            case 3: //ice man
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
                 break;
-            case 5: //cyberpunk
+            case 4: //cyberpunk
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
                 break;
-            case 6: //piraat
+            case 5: //piraat
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
                 break;
             default:
@@ -58,22 +60,22 @@ public class CharacterPrefLoad : MonoBehaviour
     {
         switch (P2ChosenCharacter)
         {
-            case 1:
+            case 0:
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
                 break;
-            case 2:
+            case 1:
                 Instantiate(P2gladiator, new Vector3(6, -2.5f, 0), Quaternion.identity);
                 break;
-            case 3: //cyborg
+            case 2: //cyborg
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
                 break;
-            case 4: //ice man
+            case 3: //ice man
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
                 break;
-            case 5: //cyberpunk
+            case 4: //cyberpunk
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
                 break;
-            case 6: //piraat
+            case 5: //piraat
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
                 break;
             default:
