@@ -1473,37 +1473,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1814602075, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: playerCollider
-      value: 
-      objectReference: {fileID: 1814602072}
-    - target: {fileID: 2370476453536785273, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3722950682590095731, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4175815606268335724, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: trans
-      value: 
-      objectReference: {fileID: 1814602081}
     - target: {fileID: 7048313612036096449, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
       propertyPath: m_RootOrder
       value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048313612036096449, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.32999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048313612036096449, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.32999998
-      objectReference: {fileID: 0}
-    - target: {fileID: 7048313612036096449, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7048313612036096449, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1548,18 +1520,6 @@ PrefabInstance:
     - target: {fileID: 7893034473726504186, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
       propertyPath: m_Name
       value: Scientist1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7893034473726504186, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8723029564518436304, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 8723029564518436304, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
@@ -2782,39 +2742,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1814602068 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7893034473726504186, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-  m_PrefabInstance: {fileID: 1026345848}
-  m_PrefabAsset: {fileID: 0}
---- !u!61 &1814602072 stripped
-BoxCollider2D:
-  m_CorrespondingSourceObject: {fileID: 1814602072, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-  m_PrefabInstance: {fileID: 1026345848}
-  m_PrefabAsset: {fileID: 0}
---- !u!96 &1814602074 stripped
-TrailRenderer:
-  m_CorrespondingSourceObject: {fileID: 1814602074, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-  m_PrefabInstance: {fileID: 1026345848}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1814602078
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1814602068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71a65900c93189442b94d911d29fbdc8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tr: {fileID: 1814602074}
---- !u!4 &1814602081 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7048313612036096449, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
-  m_PrefabInstance: {fileID: 1026345848}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2015008469
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,17 +3018,41 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 7317658157221104835, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
-      propertyPath: m_Name
-      value: Player2
+    - target: {fileID: 6861409906733050547, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861409906733050547, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861409906733050547, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6861409906733050547, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7317658157221104835, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
-      propertyPath: m_IsActive
-      value: 1
+      propertyPath: m_Name
+      value: Gladiator1
       objectReference: {fileID: 0}
     - target: {fileID: 7317658157221104858, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
       propertyPath: m_RootOrder
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317658157221104858, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317658157221104858, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7317658157221104858, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7317658157221104858, guid: be62103a65ffe19449d5b7d38fae0a3f, type: 3}
       propertyPath: m_LocalPosition.x
