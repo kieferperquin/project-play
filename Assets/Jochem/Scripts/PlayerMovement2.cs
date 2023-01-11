@@ -183,6 +183,7 @@ public class PlayerMovement2 : MonoBehaviour
         yield return new WaitForSeconds(2f);
         _rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         isKnocked = false;
+        Player2.health = 0;
         transform.position = new Vector3(0, 0, 1);
     }
 

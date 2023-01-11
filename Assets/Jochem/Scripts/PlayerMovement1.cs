@@ -71,6 +71,7 @@ public class PlayerMovement1 : MonoBehaviour
         if (Player1.jumpCount > 0 && Input.GetKeyDown(KeyCode.W))
         {
             _rb2D.velocity = Vector3.zero;
+            AnimatorManagerPlayer1.anim.SetTrigger("jump");
             _rb2D.AddForce(Player1.jumpforce * Vector3.up, ForceMode2D.Impulse);
             Player1.jumpCount =- 1;
         }
@@ -78,6 +79,7 @@ public class PlayerMovement1 : MonoBehaviour
         if (Input.GetKey(KeyCode.LeftControl))
         {
             isBlocking = true;
+            canDash = false;
             AnimatorManagerPlayer1.anim.SetBool("blocking", true);
             Shield.SetActive(true);
             Player1.speed = 0.5f;
@@ -86,6 +88,8 @@ public class PlayerMovement1 : MonoBehaviour
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
             isBlocking = false;
+            canDash = true;
+            AnimatorManagerPlayer1.anim.SetBool("blocking", false);
             Shield.SetActive(false);
             Player1.speed = 6f;
         }
@@ -162,6 +166,7 @@ public class PlayerMovement1 : MonoBehaviour
         if (collision.gameObject.CompareTag("Damage2") && isBlocking == false)
         {
             Player1.health += 5;
+            AnimatorManagerPlayer1.anim.SetTrigger("getsDamaged");
             Vector3 moveDirection = _rb2D.transform.position - collision.transform.position;
             _rb2D.velocity = Vector3.zero;
             _rb2D.AddForce(moveDirection.normalized * (100f + 4f * Player1.health));
@@ -187,6 +192,7 @@ public class PlayerMovement1 : MonoBehaviour
         _rb2D.constraints = RigidbodyConstraints2D.FreezeRotation;
         isKnocked = false;
         _rb2D.velocity = Vector3.zero;
+        Player1.health = 0;
         transform.position = new Vector3(0, 0, 1);
     }
 
@@ -221,6 +227,8 @@ public class PlayerMovement1 : MonoBehaviour
     private IEnumerator AttackUp()
     {
         canAttack = false;
+        AnimatorManagerPlayer1.Uppercut();
+        yield return new WaitForSeconds(0.2f);
         UpAttack.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         UpAttack.SetActive(false);
@@ -230,6 +238,8 @@ public class PlayerMovement1 : MonoBehaviour
     private IEnumerator AttackDown()
     {
         canAttack = false;
+        AnimatorManagerPlayer1.Lowblow();
+        yield return new WaitForSeconds(0.2f);
         BottomAttack.SetActive(true);
         yield return new WaitForSeconds(0.1f);
         BottomAttack.SetActive(false);

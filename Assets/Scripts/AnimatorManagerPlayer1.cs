@@ -7,6 +7,7 @@ public class AnimatorManagerPlayer1 : MonoBehaviour
     public static Animator anim;
 
     public Rigidbody2D _rb2D;
+    public Transform trans;
 
     private int MovementInt = 0;
 
@@ -18,6 +19,8 @@ public class AnimatorManagerPlayer1 : MonoBehaviour
    
     void Update()
     {
+        this.transform.position = trans.position;
+
         if (Input.GetKey(KeyCode.D))
         {
             MovementInt = 1;
@@ -73,6 +76,16 @@ public class AnimatorManagerPlayer1 : MonoBehaviour
     public static void Punch()
     {
         anim.SetTrigger("punch");
+    }
+
+    public static void Lowblow()
+    {
+        anim.SetTrigger("lowblow");
+    }
+
+    public static void Uppercut()
+    {
+        anim.SetTrigger("uppercut");
     }
 
     public static void Dash()
