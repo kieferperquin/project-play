@@ -2802,7 +2802,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   P1scientist: {fileID: 7893034473726504186, guid: 26ae200de06ca054fb7e1ecfacd1abb2, type: 3}
   P1gladiator: {fileID: 0}
-  P2scientist: {fileID: 0}
+  P2scientist: {fileID: 7893034473726504186, guid: 9ac8796e91c88034fa129fc46d6207e7, type: 3}
   P2gladiator: {fileID: 0}
 --- !u!4 &1721250776
 Transform:
