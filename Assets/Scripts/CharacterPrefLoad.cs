@@ -14,6 +14,11 @@ public class CharacterPrefLoad : MonoBehaviour
     public GameObject P2scientist;
     public GameObject P2gladiator;
 
+    public GameObject P1scientistUI;
+    public GameObject P1gladiatorUI;
+    public GameObject P2scientistUI;
+    public GameObject P2gladiatorUI;
+
     void Awake()
     {
         loadCharacterChosen();
@@ -35,21 +40,27 @@ public class CharacterPrefLoad : MonoBehaviour
         {
             case 0:
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(-7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 1:
                 Instantiate(P1gladiator, new Vector3(-6, -2.65f, 0), Quaternion.identity);
+                P1gladiatorUI.transform.position = new Vector3(-7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 2: //cyborg
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(-7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 3: //ice man
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(-7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 4: //cyberpunk
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(-7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 5: //piraat
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(-7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             default:
                 break;
@@ -62,21 +73,27 @@ public class CharacterPrefLoad : MonoBehaviour
         {
             case 0:
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 1:
                 Instantiate(P2gladiator, new Vector3(6, -2.5f, 0), Quaternion.identity);
+                P2gladiatorUI.transform.position = new Vector3(7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 2: //cyborg
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 3: //ice man
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 4: //cyberpunk
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             case 5: //piraat
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
+                P1scientistUI.transform.position = new Vector3(7.22222233f, -3.93518519f, -8.90740776f);
                 break;
             default:
                 break;
