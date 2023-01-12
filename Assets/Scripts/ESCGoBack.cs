@@ -19,6 +19,7 @@ public class ESCGoBack : MonoBehaviour
         {
             if (sceneName == "options")
             {
+                GameObject.Find("ChangeVolume").GetComponent<AudioManager>().SaveSoundSettings();
                 SceneManager.LoadScene("start");
             }
             if (sceneName == "controls")
