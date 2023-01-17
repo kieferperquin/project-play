@@ -1,8 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
-using TMPro;
 
 public class PlayerMovement1 : MonoBehaviour
 {
@@ -28,7 +26,7 @@ public class PlayerMovement1 : MonoBehaviour
     private GameObject BottomAttack;
     private GameObject Shield;
 
-    public static TMP_Text P1Health;
+    GameObject winner;
 
     void Start()
     {
@@ -38,13 +36,12 @@ public class PlayerMovement1 : MonoBehaviour
         UpAttack = transform.GetChild(1).gameObject;
         BottomAttack = transform.GetChild(2).gameObject;
         Shield = transform.GetChild(3).gameObject;
+        winner = GameObject.Find("winner");
     }
 
     // Update is called once per frame
     void Update()
     {
-        P1Health.text = "% " + Player1.health;
-
         if (isKnocked)
         {
             return;
@@ -156,6 +153,7 @@ public class PlayerMovement1 : MonoBehaviour
             else
             {
                 gameObject.SetActive(false);
+                GameOver();
             }
         }
     }
@@ -200,6 +198,11 @@ public class PlayerMovement1 : MonoBehaviour
         _rb2D.velocity = Vector3.zero;
         Player1.health = 0;
         transform.position = new Vector3(0, 0, 1);
+    }
+
+    void GameOver()
+    {
+        winner.GetComponent<Win>().P2HasWon();
     }
 
     private IEnumerator Dash()

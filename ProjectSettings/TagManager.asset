@@ -13,6 +13,8 @@ TagManager:
   - Damage1
   - Damage2
   - Border
+  - Health1
+  - Health2
   layers:
   - Default
   - TransparentFX

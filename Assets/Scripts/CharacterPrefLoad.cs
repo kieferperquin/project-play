@@ -21,9 +21,6 @@ public class CharacterPrefLoad : MonoBehaviour
     public GameObject P2scientistUI;
     public GameObject P2gladiatorUI;
 
-    public TMP_Text P1Health;
-    public TMP_Text P2Health;
-
     void Awake()
     {
         loadCharacterChosen();
@@ -107,11 +104,5 @@ public class CharacterPrefLoad : MonoBehaviour
             default:
                 break;
         }
-    }
-
-    private void Update()
-    {
-        P1Health.text = PlayerMovement1.P1Health.text;
-        P2Health.text = PlayerMovement2.P2Health.text;
     }
 }
