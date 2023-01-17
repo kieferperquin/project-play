@@ -11,6 +11,7 @@ public class Win : MonoBehaviour
     private void Start()
     {
         PlayerPrefs.SetInt(p1Won, 0);
+        PlayerPrefs.SetInt(p2Won, 0);
     }
     public void P1HasWon()
     {
@@ -19,7 +20,7 @@ public class Win : MonoBehaviour
     }
     public void P2HasWon()
     {
-        PlayerPrefs.SetInt(p2Won, 2);
+        PlayerPrefs.SetInt(p2Won, 1);
         SceneManager.LoadScene("winScreen");
     }
 }
