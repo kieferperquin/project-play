@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class CharacterPrefLoad : MonoBehaviour
 {
@@ -19,9 +21,16 @@ public class CharacterPrefLoad : MonoBehaviour
     public GameObject P2scientistUI;
     public GameObject P2gladiatorUI;
 
+    public TMP_Text P1Health;
+    public TMP_Text P2Health;
+
     void Awake()
     {
         loadCharacterChosen();
+        P1scientistUI.SetActive(false);
+        P1gladiatorUI.SetActive(false);
+        P2scientistUI.SetActive(false);
+        P2gladiatorUI.SetActive(false);
         SpawnP1Player();
         SpawnP2Player();
     }
@@ -40,11 +49,11 @@ public class CharacterPrefLoad : MonoBehaviour
         {
             case 0:
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
-                P1scientistUI.transform.position = new Vector3(-7.22222233f, -3.93518519f, -8.90740776f);
+                P1scientistUI.SetActive(true);
                 break;
             case 1:
                 Instantiate(P1gladiator, new Vector3(-6, -2.65f, 0), Quaternion.identity);
-                P1gladiatorUI.transform.position = new Vector3(-7.22222233f, -3.93518519f, -8.90740776f);
+                P1gladiatorUI.SetActive(true);
                 break;
             case 2: //cyborg
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
@@ -73,11 +82,11 @@ public class CharacterPrefLoad : MonoBehaviour
         {
             case 0:
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
-                P1scientistUI.transform.position = new Vector3(7.22222233f, -3.93518519f, -8.90740776f);
+                P2scientistUI.SetActive(true);
                 break;
             case 1:
                 Instantiate(P2gladiator, new Vector3(6, -2.5f, 0), Quaternion.identity);
-                P2gladiatorUI.transform.position = new Vector3(7.22222233f, -3.93518519f, -8.90740776f);
+                P2gladiatorUI.SetActive(true);
                 break;
             case 2: //cyborg
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
@@ -98,5 +107,11 @@ public class CharacterPrefLoad : MonoBehaviour
             default:
                 break;
         }
+    }
+
+    private void Update()
+    {
+        P1Health.text = PlayerMovement1.P1Health.text;
+        P2Health.text = PlayerMovement2.P2Health.text;
     }
 }

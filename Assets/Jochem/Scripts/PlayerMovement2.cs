@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class PlayerMovement2 : MonoBehaviour
 {
@@ -26,6 +28,8 @@ public class PlayerMovement2 : MonoBehaviour
     private GameObject BottomAttack;
     private GameObject Shield;
 
+    public static TMP_Text P2Health;
+
     void Start()
     {
         _rb2D = GetComponent<Rigidbody2D>();
@@ -39,6 +43,8 @@ public class PlayerMovement2 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        P2Health.text = "% " + Player2.health;
+
         if (isKnocked)
         {
             return;
