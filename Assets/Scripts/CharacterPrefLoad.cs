@@ -14,9 +14,18 @@ public class CharacterPrefLoad : MonoBehaviour
     public GameObject P2scientist;
     public GameObject P2gladiator;
 
+    public GameObject P1scientistIcon;
+    public GameObject P1gladiatorIcon;
+    public GameObject P2scientistIcon;
+    public GameObject P2gladiatorIcon;
+
     void Awake()
     {
         loadCharacterChosen();
+        P1scientistIcon.SetActive(false);
+        P2scientistIcon.SetActive(false);
+        P1gladiatorIcon.SetActive(false);
+        P2gladiatorIcon.SetActive(false);
         SpawnP1Player();
         SpawnP2Player();
     }
@@ -35,9 +44,11 @@ public class CharacterPrefLoad : MonoBehaviour
         {
             case 0:
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
+                P1scientistIcon.SetActive(true);
                 break;
             case 1:
                 Instantiate(P1gladiator, new Vector3(-6, -2.65f, 0), Quaternion.identity);
+                P1gladiatorIcon.SetActive(true);
                 break;
             case 2: //cyborg
                 Instantiate(P1scientist, new Vector3(-6, -2.65f, 0), Quaternion.identity);
@@ -62,9 +73,11 @@ public class CharacterPrefLoad : MonoBehaviour
         {
             case 0:
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
+                P2scientistIcon.SetActive(true);
                 break;
             case 1:
                 Instantiate(P2gladiator, new Vector3(6, -2.5f, 0), Quaternion.identity);
+                P2gladiatorIcon.SetActive(true);
                 break;
             case 2: //cyborg
                 Instantiate(P2scientist, new Vector3(6, -2.5f, 0), Quaternion.identity);
