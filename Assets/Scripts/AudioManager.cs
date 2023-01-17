@@ -27,7 +27,7 @@ public class AudioManager : MonoBehaviour
             soundEffectsSlider.value = soundEffectsFloat;
             PlayerPrefs.SetFloat(BackgroundPref, backgroundFloat);
             PlayerPrefs.SetFloat(SoundEffectsPref, soundEffectsFloat);
-            PlayerPrefs.SetInt(FirstPlay, -1);
+            PlayerPrefs.SetInt(FirstPlay, +1);
         }
         else
         {
