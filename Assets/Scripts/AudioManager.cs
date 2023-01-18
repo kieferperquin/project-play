@@ -9,7 +9,7 @@ public class AudioManager : MonoBehaviour
     private int firstPlayInt;
     public Slider backgroundSlider, soundEffectsSlider;
     private float backgroundFloat, soundEffectsFloat;
-    public AudioSource backgroundAudio;
+    private AudioSource backgroundAudio;
     public AudioSource[] soundEffectsAudio;
 
     public float value;

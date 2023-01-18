@@ -30,6 +30,10 @@ public class ESCGoBack : MonoBehaviour
             {
                 SceneManager.LoadScene("start");
             }
+            if (sceneName == "winScreen")
+            {
+                SceneManager.LoadScene("start");
+            }
             if (sceneName == "mapSelect")
             {
                 SceneManager.LoadScene("characterSelect");
