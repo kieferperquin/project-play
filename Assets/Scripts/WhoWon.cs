@@ -20,27 +20,36 @@ public class WhoWon : MonoBehaviour
     public GameObject arrowP1;
     public GameObject arrowP2;
 
+    bool p1W = false;
+    bool p2W = false;
+
     private void Start()
     {
         p1DidWin = PlayerPrefs.GetInt(p1Won);
         p2DidWin = PlayerPrefs.GetInt(p2Won);
 
-        if (p1DidWin == 1 && p2DidWin == 0)
+        if (p1DidWin == 1)
         {
-             p1WinScreen.transform.position = new Vector3(0, 0, 0);
+            if (p2DidWin == 0)
+            {
+                p1WinScreen.transform.position = new Vector3(0, 0, 0);
+                p1W = true;
+                updateArrowPosP1();
+            }
         }
-        else if (p1DidWin == 0 && p2DidWin == 1)
+        else if (p1DidWin == 0)
         {
-            p2WinScreen.transform.position = new Vector3(0, 0, 0);
-        }
-        else
-        {
-
+            if (p2DidWin == 1)
+            {
+                p2WinScreen.transform.position = new Vector3(0, 0, 0);
+                p2W = true;
+                updateArrowPosP2();
+            }
         }
     }
     private void Update()
     {
-        if (p1DidWin == 1 && p2DidWin == 0)
+        if (p1W)
         {
             if (Input.GetKeyDown(KeyCode.F))
             {
@@ -60,16 +69,30 @@ public class WhoWon : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.S))
             {
-                p1ArrowDown++;
-                updateArrowPosP1();
+                if (p1ArrowDown == 1)
+                {
+
+                }
+                else
+                {
+                    p1ArrowDown++;
+                    updateArrowPosP1();
+                }
             }
             if (Input.GetKeyDown(KeyCode.W))
             {
-                p1ArrowDown--;
-                updateArrowPosP1();
+                if (p1ArrowDown == 0)
+                {
+
+                }
+                else
+                {
+                    p1ArrowDown--;
+                    updateArrowPosP1();
+                }
             }
         }
-        if (p1DidWin == 0 && p2DidWin == 1)
+        if (p2W)
         {
             if (Input.GetKeyDown(KeyCode.Keypad9))
             {
@@ -89,13 +112,27 @@ public class WhoWon : MonoBehaviour
             }
             if (Input.GetKeyDown(KeyCode.DownArrow))
             {
-                p2ArrowDown++;
-                updateArrowPosP2();
+                if (p2ArrowDown == 1)
+                {
+
+                }
+                else
+                {
+                    p2ArrowDown++;
+                    updateArrowPosP1();
+                }
             }
             if (Input.GetKeyDown(KeyCode.UpArrow))
             {
-                p2ArrowDown--;
-                updateArrowPosP2();
+                if (p2ArrowDown == 0)
+                {
+
+                }
+                else
+                {
+                    p2ArrowDown--;
+                    updateArrowPosP1();
+                }
             }
         }
     }
@@ -104,11 +141,11 @@ public class WhoWon : MonoBehaviour
         switch (p1ArrowDown)
         {
             case 0:
-                arrowP1.transform.position = new Vector2(3.5f, 0f);
+                arrowP1.transform.position = new Vector3(3.5f, 0f, 0);
                 break;
 
             case 1:
-                arrowP1.transform.position = new Vector2(3.5f, -3f);
+                arrowP1.transform.position = new Vector3(3.5f, -3f, 0);
                 break;
 
             default:
