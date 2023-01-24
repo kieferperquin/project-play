@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
 public class PlayerMovement2 : MonoBehaviour
 {
     private float playerInput = 0;
@@ -41,7 +40,7 @@ public class PlayerMovement2 : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         if (isKnocked)
         {
