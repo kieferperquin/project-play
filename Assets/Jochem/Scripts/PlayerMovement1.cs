@@ -87,7 +87,6 @@ public class PlayerMovement1 : MonoBehaviour
             AnimatorManagerPlayer1.anim.SetBool("blocking", true);
             Shield.SetActive(true);
             Player1.speed = 0.5f;
-
         }
         if (Input.GetKeyUp(KeyCode.LeftControl))
         {
